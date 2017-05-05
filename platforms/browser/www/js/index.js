@@ -57,6 +57,16 @@ var app = {
         this.btnCamera();
     },
 
+
+    //播放音频文件
+    playAudio: function() {
+
+    },
+
+
+
+
+
     //相机事件
     btnCamera: function() {
         // 缓存this
@@ -66,19 +76,17 @@ var app = {
         btnCamera.onclick = function() {
             // console.log('获取相机按钮成功');
             // 执行调用相机的函数
-            _this.useCamera();
-            //展示图片
-            _this.showImage(app.imageURL, 'showImage')
+            _this.useCamera(_this.showImage);
         };
     },
 
     //调用相机, 获取拍照的地址
-    useCamera: function() {
+    useCamera: function(callback) {
         navigator.camera.getPicture(onSuccess, onFail);
         //注册成功函数
         function onSuccess(imageURL) {
-            //将URL作为属性绑定app这个对象上面
-            app.imageURL = imageURL;
+            //调用相机成功执行回调函数, 并把获取到的图像地址作为参数传入
+            callback(imageURL);
         }
 
         function onFail(err) {
@@ -87,9 +95,9 @@ var app = {
         }
     },
     //展示图片
-    showImage: function(imageURL, targetId) {
+    showImage: function(imageURL) {
         //获取img标签
-        var showImg = document.getElementById(targetId);
+        var showImg = document.getElementById('showImage');
         showImg.src = imageURL;
     }
 };
