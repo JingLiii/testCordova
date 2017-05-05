@@ -54,7 +54,7 @@ body {
     /* position in the center of the screen */
     left: 50%;
     top: 25%;
-    height: 50px;
+    height: 500px;
     /* text area height */
     width: 225px;
     /* text area width */
@@ -67,7 +67,7 @@ body {
 }
 
 
-/* Landscape layout (with min-width) */
+/* Landscape layout (with min-wid: ;th) */
 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
@@ -87,6 +87,18 @@ h1 {
     overflow: visible;
     padding: 0px;
     text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 16px 0;
+    font-size: 22px;
+}
+
+img {
+    width: 200px;
+    border: solid 1px #333;
+    height: 130px;
 }
 
 .event {
