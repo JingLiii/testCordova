@@ -55,16 +55,40 @@ var app = {
     registerEvent: function() {
         //相机事件
         this.btnCamera();
+        //播放音频文件
+        this.playMusic();
+    },
+
+    //播放音乐事件
+    playMusic: function() {
+        var _this = this;
+        var btn = document.getElementById('btnPlayMusic');
+        btn.onclick = function() {
+            var url = '/android_asset/www/media/music.mp3';
+            _this.playAudio(url)
+        };
     },
 
 
     //播放音频文件
-    playAudio: function() {
+    playAudio: function(audioURL) {
+        //新建了一个媒体对象
+        var media = new Media(audioURL, onSuccess, onError, onStatus);
 
+        function onSuccess() {
+            console.log("Media: Success");
+        }
+
+        function onError(error) {
+            alert('Media Error: ' + error.code + ': ' + error.message);
+        }
+
+        function onStatus(statCode) {
+            console.log("Media status: " + statCode);
+        }
+
+        media.play();
     },
-
-
-
 
 
     //相机事件

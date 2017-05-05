@@ -53,10 +53,23 @@ var app = {
 
     // 注册事件
     registerEvent: function() {
-        //相机事件
+        // 相机事件
         this.btnCamera();
-        //播放音频文件
+        // 播放音频文件
         this.playMusic();
+        // 调用浏览器
+        this.useAppBrowser();
+    },
+    useAppBrowser: function() {
+        var btnOurWeb = document.getElementById('btnOurWeb');
+        btnOurWeb.onclick = function() {
+            //按照指定格式跳转到指定网站
+            cordova.InAppBrowser.open('http://yitihua.org', '_blank', 'location=no');
+        };
+        var btnShowPDF = document.getElementById('btnShowPDF');
+        btnShowPDF.onclick = function() {
+            cordova.InAppBrowser.open('http://192.168.140.74/MyPDFJS/', '_system', 'location=no');
+        };
     },
 
     //播放音乐事件
