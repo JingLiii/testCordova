@@ -59,9 +59,44 @@ var app = {
         this.playMusic();
         // 调用浏览器
         this.useAppBrowser();
-        // 录音播放
+        // 录音音频播放
         this.audioCapture();
+        // 录制视频播放
+        this.videoCapture();
     },
+
+    // 录制视频播放
+    videoCapture: function() {
+        var _this = this;
+        var btnCapVideo = document.getElementById('btnCapVideo');
+        btnCapVideo.onclick = function() {
+            // console.log('开始录制视频')
+            _this.stratCaptureVideo()
+        };
+        var btnPlayVideo = document.getElementById('btnPlayVideo');
+        btnPlayVideo.onclick = function() {
+            console.log('开始播放视频')
+        };
+    },
+
+    stratCaptureVideo: function() {
+        var _this = this;
+
+        // 调用方法开始录制视频
+        navigator.device.capture.captureVideo(onSuccess, onFailure);
+
+        // 录制成功的方法
+        function onSuccess(fileList) {
+            _this.nowVideoPath = fileList[0].fullPath;
+        }
+
+        // 录制失败的方法
+        function onFailure(error) {
+            alert('Capture error: ' + error.code);
+        }
+    },
+
+
 
     // 录制音频文件并播放
     audioCapture: function() {
@@ -103,7 +138,7 @@ var app = {
         };
         var btnShowPDF = document.getElementById('btnShowPDF');
         btnShowPDF.onclick = function() {
-            cordova.InAppBrowser.open('http://192.168.140.74/MyPDFJS/', '_system', 'location=no');
+            cordova.InAppBrowser.open('http://192.168.140.74', '_system', 'location=no');
         };
     },
 
@@ -137,7 +172,6 @@ var app = {
 
         media.play();
     },
-
 
     //相机事件
     btnCamera: function() {

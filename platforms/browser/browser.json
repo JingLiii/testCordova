@@ -38,6 +38,12 @@
         },
         "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-open": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {},
@@ -357,6 +363,38 @@
             "id": "cordova-plugin-media-capture.CaptureProxy",
             "pluginId": "cordova-plugin-media-capture",
             "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-file-transfer/www/browser/FileTransfer.js",
+            "id": "cordova-plugin-file-transfer.BrowserFileTransfer",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-open/www/disusered.open.js",
+            "id": "cordova-open.Open",
+            "pluginId": "cordova-open",
+            "merges": [
+                "cordova.plugins.disusered"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -366,6 +404,8 @@
         "cordova-plugin-file": "4.3.3",
         "cordova-plugin-media": "3.0.1",
         "cordova-plugin-inappbrowser": "1.7.1",
-        "cordova-plugin-media-capture": "1.4.3"
+        "cordova-plugin-media-capture": "1.4.3",
+        "cordova-plugin-file-transfer": "1.6.3",
+        "cordova-open": "1.0.12"
     }
 }

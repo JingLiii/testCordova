@@ -297,6 +297,30 @@ module.exports = [
         "file": "plugins/cordova-plugin-media-capture/www/android/init.js",
         "pluginId": "cordova-plugin-media-capture",
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
+    },
+    {
+        "id": "cordova-open.Open",
+        "file": "plugins/cordova-open/www/disusered.open.js",
+        "pluginId": "cordova-open",
+        "merges": [
+            "cordova.plugins.disusered"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -308,7 +332,9 @@ module.exports.metadata =
     "cordova-plugin-file": "4.3.3",
     "cordova-plugin-media": "3.0.1",
     "cordova-plugin-inappbrowser": "1.7.1",
-    "cordova-plugin-media-capture": "1.4.3"
+    "cordova-plugin-media-capture": "1.4.3",
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-open": "1.0.12"
 };
 // BOTTOM OF METADATA
 });

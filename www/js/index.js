@@ -59,9 +59,65 @@ var app = {
         this.playMusic();
         // 调用浏览器
         this.useAppBrowser();
-        // 录音播放
+        // 录音音频播放
         this.audioCapture();
+        // 录制视频播放
+        this.videoCapture();
     },
+
+    // 录制视频播放
+    videoCapture: function() {
+        var _this = this;
+        var btnCapVideo = document.getElementById('btnCapVideo');
+        btnCapVideo.onclick = function() {
+            // console.log('开始录制视频')
+            _this.stratCaptureVideo()
+        };
+        var btnPlayVideo = document.getElementById('btnPlayVideo');
+        btnPlayVideo.onclick = function() {
+            // console.log('开始播放视频')
+            _this.playVideo(_this.nowVideoPath);
+        };
+    },
+
+    playVideo: function(url) {
+        //定义打开本地的工具
+        var open = cordova.plugins.disusered.open;
+
+        function success() {
+            console.log('Success');
+        }
+
+        function error(code) {
+            if (code === 1) {
+                alert('No file handler found');
+            } else {
+                alert('Undefined error');
+            }
+        }
+
+        open(url, success, error);
+    },
+
+
+    stratCaptureVideo: function() {
+        var _this = this;
+
+        // 调用方法开始录制视频
+        navigator.device.capture.captureVideo(onSuccess, onFailure);
+
+        // 录制成功的方法
+        function onSuccess(fileList) {
+            _this.nowVideoPath = fileList[0].fullPath;
+        }
+
+        // 录制失败的方法
+        function onFailure(error) {
+            alert('Capture error: ' + error.code);
+        }
+    },
+
+
 
     // 录制音频文件并播放
     audioCapture: function() {
